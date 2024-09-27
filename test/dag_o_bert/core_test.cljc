@@ -143,6 +143,7 @@
                   :d (fn [_] (swap! !control assoc :d :ok))})
           [ctx ret] (<!! (run g 42))]
       (is (= nil ret))
+      (Thread/sleep 100) ;; Yeah: ugly but needed
       (is (= nil (:d @!control)))
       (is (= :ok (:b @!control)))
       (is (= :ok (:dangling @!control)))
