@@ -1,6 +1,7 @@
 # DAG-o-bert
 
 [![Clojars][clojars-badge]][clojars]
+[![CI][gha-badge]][gha]
 [![License][license-badge]][license]
 ![Status][status-badge]
 
@@ -361,13 +362,16 @@ will. Contribute if you have the time.
 
 <!-- links -->
 
-[core-async]: #
-[integrant]: #
+[core-async]: https://github.com/clojure/core.async
+[integrant]: https://github.com/weavejester/integrant
 
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: #license
 
-[clojars-badge]: https://img.shields.io/clojars/v/luchiniatwork/dag-o-bert.svg
-[clojars]: http://clojars.org/luchiniatwork/dag-o-bert
+[clojars-badge]: https://img.shields.io/clojars/v/net.clojars.luchiniatwork/dag-o-bert.svg
+[clojars]: https://clojars.org/net.clojars.luchiniatwork/dag-o-bert
+
+[gha-badge]: https://github.com/luchiniatwork/dag-o-bert/actions/workflows/ci.yml/badge.svg
+[gha]: https://github.com/luchiniatwork/dag-o-bert/actions
 
 [status-badge]: https://img.shields.io/badge/project%20status-prod-brightgreen.svg
