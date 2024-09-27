@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
-  build-and-test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -16,7 +16,7 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
 
-      - name: Test
+      - name: Test proper
         uses: luchiniatwork/nix-shell-action@v4
         with:
           flakes-from-devshell: true
