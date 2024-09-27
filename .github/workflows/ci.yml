@@ -1,0 +1,24 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+        with:
+          nix_path: nixpkgs=channel:nixos-unstable
+
+      - name: Test
+        uses: luchiniatwork/nix-shell-action@v4
+        with:
+          flakes-from-devshell: true
+          script: |
+            clojure -M:test
