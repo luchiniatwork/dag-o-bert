@@ -95,15 +95,22 @@
                                                 pred (or (:filter edge-opts)
                                                          (constantly true))
                                                 k (or (:name edge-opts) from-node)
+                                                named? (not (:skip-name? edge-opts))
                                                 node-ret' (if transform
                                                             (transform node-ret)
-                                                            node-ret)]
+                                                            node-ret)
+                                                not-filtered? (pred node-ret')]
                                             (cond-> m
                                               (= :abort (:control run-ctx))
                                               (assoc ::must-skip? true)
-                                              (pred node-ret')
+                                              (and not-filtered?
+                                                   named?)
                                               (assoc k node-ret'
-                                                     ::run-ctx run-ctx))))
+                                                     ::run-ctx run-ctx)
+                                              (and not-filtered?
+                                                   (not named?))
+                                              (merge node-ret'
+                                                     {::run-ctx run-ctx}))))
                                         {}
                                         in))
             run-ctx (::run-ctx input-map)

@@ -33,7 +33,7 @@ More context under [Motivation](#motivation).
 Include the following dependency in your `deps.edn`:
 
 ```clojure
-{:deps {net.clojars.luchiniatwork/dag-o-bert {:mvn/version "0.1.0"}}}
+{:deps {net.clojars.luchiniatwork/dag-o-bert {:mvn/version "0.1.1"}}}
 ```
 
 
@@ -168,6 +168,17 @@ under the key named exactly `:from0node`.
 Sometimes this behavior is not desired. `:name` allows you to define
 the name of key to be used. I.e. `[:from-node :to-node {:name
 :my-key-name}]`
+
+### :skip-name?
+
+Alternateively, you might want to skip the default naming convention
+altogether when your functions return maps - particularly if they are
+fully namespaced maps.
+
+If this is the case, you can set `[:from-node :to-node {:skip-name?
+true}]` and the map your `:from-node` returns will be merged with
+other params sent from upstream functions when calling your `:to-node`
+downstream function.
 
 ### :transform
 

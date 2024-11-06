@@ -196,6 +196,15 @@
              :end-node :c}]
       (is (= 15 (run-sync g 5)))))
 
+  (testing "skip-key?"
+    (let [g {:nodes {:a (fn [i] {:x i :y (* i 3)})
+                     :b (fn [{:keys [x y]}]
+                          (+ x y))}
+             :edges [[:a :b {:skip-name? true}]]
+             :start-node :a
+             :end-node :b}]
+      (is (= 20 (run-sync g 5)))))
+
   (testing "transfrom edges"
     (let [g {:nodes {:a identity
                      :b #(:a %)}
